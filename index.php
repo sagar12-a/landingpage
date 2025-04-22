@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  
     <header>
         <div class="logo"><img src="admate.png"></div>
         <div class="toll-free">Toll Free: 1800-123-4567</div>
@@ -62,17 +65,27 @@
         </div>
       
         <div class="form-section">
+        <?php
+if (isset($_GET['message'])) {
+    if ($_GET['message'] == 'success') {
+        echo "<p style='color: green;'>Your information was submitted successfully!</p>";
+    } elseif ($_GET['message'] == 'error') {
+        echo "<p style='color: red;'>Oops! There was an error submitting your information. Please try again.</p>";
+    }
+}
+?>
           <h3>Enroll Now</h3>
-          <form id="enrollForm">
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <input type="tel" placeholder="Phone Number" required>
-            <textarea placeholder="Your Message" rows="4"></textarea>
+          <form method="post" action="connect.php" >
+            <input type="text" placeholder="Full Name"  id="name" name="name" required>
+            <input type="email" placeholder="Email Address" id="email" name="email" required>
+            <input type="tel" placeholder="Phone Number"  id="number" name="phone" required>
+            <textarea placeholder="Your Message" rows="4" id="message" name="message"></textarea>
             <button type="submit">Submit</button>
           </form>
           <div id="thankYouMessage" style="display: none; color: green; margin-top: 20px;">
             Contact us soon! We will reach out to you shortly.
         </div>
+        
         </div>
       </section>
       <section class="nav-section2">
@@ -353,6 +366,8 @@
           © 2025 Digital Marketing Course. All Rights Reserved.
         </div>
       </footer>
+      
    <script src="script.js"></script> 
+
 </body>
 </html>
